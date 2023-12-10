@@ -10,8 +10,7 @@
     "plugin:@typescript-eslint/recommended",
     "prettier",
     "plugin:import/errors",
-    "plugin:import/warnings",
-    "plugin:@next/next/recommended"
+    "plugin:import/warnings"
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
