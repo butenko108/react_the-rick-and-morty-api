@@ -18,7 +18,7 @@ const renderCustomButtons = ({ page, type, element, currentPageNumber }: RenderC
   const isActive = page === currentPageNumber;
   const isPrevDisabled = currentPageNumber === defaultNumberPage;
   const isLastDisabled = currentPageNumber === total;
-  const commonButtonsStyles = 'flex h-[34px] w-[34px] items-center justify-center rounded';
+  const commonButtonsStyles = 'flex h-[34px] w-[34px] items-center justify-center rounded duration-300';
 
   switch (type) {
     case 'page':
@@ -27,8 +27,8 @@ const renderCustomButtons = ({ page, type, element, currentPageNumber }: RenderC
           className={cn(
             commonButtonsStyles,
             isActive
-              ? 'pagination-active-button text-washed-black bg-white'
-              : 'pagination-inactive-button bg-dark-elf text-white-smoke',
+              ? 'pagination-active-button text-washed-black hover:bg-tangled-web bg-white'
+              : 'pagination-inactive-button hover:bg-night-black bg-dark-elf text-white-smoke',
           )}
         >
           {page}
@@ -37,7 +37,13 @@ const renderCustomButtons = ({ page, type, element, currentPageNumber }: RenderC
 
     case 'prev':
       return (
-        <button className={cn(commonButtonsStyles, 'mr-[5px]', isPrevDisabled ? 'bg-mortar-grey' : 'bg-white')}>
+        <button
+          className={cn(
+            commonButtonsStyles,
+            'mr-[5px]',
+            isPrevDisabled ? 'bg-mortar-grey' : 'hover:bg-tangled-web pagination-inactive-button bg-white',
+          )}
+        >
           <img
             src={ChevronLeftURL}
             alt="chevron left"
@@ -48,7 +54,13 @@ const renderCustomButtons = ({ page, type, element, currentPageNumber }: RenderC
 
     case 'next':
       return (
-        <button className={cn(commonButtonsStyles, 'ml-[5px]', isLastDisabled ? 'bg-mortar-grey' : 'bg-white')}>
+        <button
+          className={cn(
+            commonButtonsStyles,
+            'ml-[5px]',
+            isLastDisabled ? 'bg-mortar-grey' : 'hover:bg-tangled-web pagination-inactive-button bg-white',
+          )}
+        >
           <img
             src={ChevronLeftURL}
             alt="chevron left"
@@ -60,7 +72,12 @@ const renderCustomButtons = ({ page, type, element, currentPageNumber }: RenderC
     case 'jump-prev':
     case 'jump-next':
       return (
-        <button className={cn(commonButtonsStyles, 'pagination-inactive-button bg-dark-elf text-white-smoke')}>
+        <button
+          className={cn(
+            commonButtonsStyles,
+            'pagination-inactive-button hover:bg-night-black bg-dark-elf text-white-smoke',
+          )}
+        >
           ...
         </button>
       );
