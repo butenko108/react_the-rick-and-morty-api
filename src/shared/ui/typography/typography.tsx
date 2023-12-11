@@ -1,7 +1,7 @@
 import cn from 'classnames';
 import { ElementType, HTMLAttributes, ReactNode } from 'react';
 
-export type TypographyVariant = 'h1' | 'h2' | 'p1' | 'p2' | 'label';
+export type TypographyVariant = 'h1' | 'h2' | 'p1' | 'p2' | 'p3' | 'label';
 
 type Props = HTMLAttributes<ElementType> & {
   className?: string;
@@ -21,6 +21,7 @@ export const Typography = ({ className, as: Component = 'p', variant = 'p1', chi
 
       { 'text-lg leading-[30px]': variant === 'p1' },
       { 'text-base font-medium leading-[26px]': variant === 'p2' },
+      { 'text-base leading-[24px]': variant === 'p3' },
       className,
     )}
   >

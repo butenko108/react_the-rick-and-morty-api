@@ -5,6 +5,7 @@ import { MaterialUIProvider } from './providers';
 import { EllipsisURL } from '../assets';
 import { Card } from '../features';
 import { CREATURES } from '../shared/constants';
+import { Typography } from '../shared/ui';
 import { Container } from '../shared/ui/container/container';
 
 function App() {
@@ -14,8 +15,10 @@ function App() {
         <Container padding>
           <div className="mb-5">
             <Stack direction="row" spacing={2}>
-              <Button variant="contained" color="white">
-                Filters
+              <Button variant="contained" color="white" className="h-[57px] !min-w-[143px] !max-w-[143px]">
+                <Typography variant="p3" className="uppercase tracking-[0.5px] text-night-sky">
+                  Filter
+                </Typography>
               </Button>
             </Stack>
           </div>
@@ -30,7 +33,7 @@ function App() {
             <Button
               variant="contained"
               color="white"
-              className="!shadow-button !absolute -bottom-7 -right-7 !h-14 !min-w-[56px] !max-w-[56px] !rounded-full !p-0"
+              className="!shadow-button !absolute -bottom-7 -right-7 h-14 !min-w-[56px] !max-w-[56px] !rounded-full !p-0"
             >
               <img src={EllipsisURL} alt="Ellipsis" />
             </Button>
