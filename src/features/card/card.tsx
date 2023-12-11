@@ -14,7 +14,7 @@ export const Card = ({ card }: Props) => (
       className="max-h-[220px] w-full rounded-[9px] object-cover object-center sm:max-h-[220px] md:max-h-none md:max-w-[349px] lg:max-w-[229px]"
     />
 
-    <div className="px-4 py-[14px]">
+    <div className="px-[14px] py-3">
       <Typography as="h2" variant="h2" className="mb-[1px] text-white-smoke">
         {card.name}
       </Typography>

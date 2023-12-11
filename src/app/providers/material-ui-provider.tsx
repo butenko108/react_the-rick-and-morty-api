@@ -4,19 +4,16 @@ import { ReactNode } from 'react';
 declare module '@mui/material/styles' {
   interface Palette {
     white: Palette['primary'];
-    'white-smoke': Palette['primary'];
   }
 
   interface PaletteOptions {
     white?: PaletteOptions['primary'];
-    'white-smoke'?: PaletteOptions['primary'];
   }
 }
 
 declare module '@mui/material/Button' {
   interface ButtonPropsColorOverrides {
     white: true;
-    'white-smoke': true;
   }
 }
 
@@ -29,12 +26,6 @@ theme = createTheme(theme, {
         main: '#fff',
       },
       name: 'white',
-    }),
-    'white-smoke': theme.palette.augmentColor({
-      color: {
-        main: '#F5F5F5',
-      },
-      name: 'white-smoke',
     }),
   },
 });
