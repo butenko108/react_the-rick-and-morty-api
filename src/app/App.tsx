@@ -2,7 +2,7 @@ import Button from '@mui/material/Button';
 import { Stack } from '@mui/system';
 
 import { EllipsisURL } from '../assets';
-import { Card } from '../features';
+import { Card, Pagination } from '../features';
 import { CREATURES } from '../shared/constants';
 import { Typography } from '../shared/ui';
 import { Container } from '../shared/ui/container/container';
@@ -31,13 +31,15 @@ const App = () => {
           <Button
             variant="contained"
             color="white"
-            className="!shadow-button !absolute -bottom-7 -right-7 h-14 !min-w-[56px] !max-w-[56px] !rounded-full !p-0"
+            className="!absolute -bottom-7 -right-7 h-14 !min-w-[56px] !max-w-[56px] !rounded-full !p-0 !shadow-button"
           >
             <img src={EllipsisURL} alt="Ellipsis" />
           </Button>
         </ul>
 
-        <div className="flex items-center justify-center">Pagination</div>
+        <div className="flex items-center justify-center">
+          <Pagination />
+        </div>
       </Container>
     </main>
   );

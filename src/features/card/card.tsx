@@ -7,7 +7,7 @@ interface Props {
 }
 
 export const Card = ({ card }: Props) => (
-  <div className="cursor-pointer rounded-[9px] bg-dark-elf shadow-card duration-300 hover:shadow-mortar-grey md:flex">
+  <div className="hover:bg-night-black cursor-pointer rounded-[9px] bg-dark-elf shadow-card duration-300 md:flex">
     <img
       src={card.image}
       alt={card.name}
