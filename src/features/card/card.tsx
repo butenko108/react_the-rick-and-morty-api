@@ -11,7 +11,7 @@ export const Card = ({ card }: Props) => (
     <img
       src={card.image}
       alt={card.name}
-      className="max-h-[220px] w-full rounded-[9px] object-cover object-center sm:max-h-[220px] md:max-h-none md:max-w-[349px] lg:max-w-[229px]"
+      className="max-h-[220px] w-full rounded-t-[9px] object-cover object-center sm:max-h-[220px] md:max-h-none md:max-w-[349px] md:rounded-s-[9px] md:rounded-tr-none lg:max-w-[229px]"
     />
 
     <div className="px-[14px] py-3">
@@ -19,7 +19,7 @@ export const Card = ({ card }: Props) => (
         {card.name}
       </Typography>
 
-      <div className="mb-4 flex items-center gap-[7px]">
+      <div className="mb-3 flex items-center gap-[7px]">
         <div className="h-[9px] w-[9px] rounded-[5px] bg-mortar-grey" />
 
         <Typography variant="p2" className="text-white">

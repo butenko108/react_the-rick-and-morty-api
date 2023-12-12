@@ -8,7 +8,7 @@ import { Container, Typography } from 'shared/ui';
 
 export const CardList = () => {
   return (
-    <Container padding>
+    <Container padding className="py-6">
       <div className="mb-5">
         <Stack direction="row" spacing={2}>
           <Button variant="contained" color="white" className="h-[57px] !min-w-[143px] !max-w-[143px]">

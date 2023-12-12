@@ -2,7 +2,7 @@ import { CardDetails, CardList } from 'features';
 
 const App = () => {
   return (
-    <main className="min-h-screen bg-night-sky py-5">
+    <main className="min-h-screen bg-night-sky">
       <CardDetails />
       <CardList />
     </main>
