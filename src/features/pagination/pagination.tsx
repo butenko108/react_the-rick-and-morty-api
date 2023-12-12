@@ -3,6 +3,8 @@ import ReactPagination from 'rc-pagination/lib/Pagination';
 import { ReactNode, useState } from 'react';
 
 import { ChevronLeftURL } from 'assets';
+import { BREAKPOINTS } from 'shared/constants';
+import { useMediaQuery } from 'shared/hooks';
 
 const defaultNumberPage = 1;
 const total = 10;
@@ -90,11 +92,14 @@ const renderCustomButtons = ({ page, type, element, currentPageNumber }: RenderC
 export const Pagination = () => {
   const [currentPageNumber, setCurrentPageNumber] = useState(defaultNumberPage);
   const changePageNumber = (pageNumber: number) => setCurrentPageNumber(pageNumber);
+  const sm = useMediaQuery(BREAKPOINTS.sm);
 
   return (
     <ReactPagination
       showTitle={false}
       pageSize={1}
+      showPrevNextJumpers={sm}
+      showLessItems={!sm}
       total={total}
       current={currentPageNumber}
       onChange={changePageNumber}

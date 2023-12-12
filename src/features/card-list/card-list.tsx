@@ -29,7 +29,7 @@ export const CardList = () => {
         <Button
           variant="contained"
           color="white"
-          className="!absolute -bottom-7 -right-7 h-14 !min-w-[56px] !max-w-[56px] !rounded-full !p-0 !shadow-button"
+          className="!absolute -bottom-7 -right-7 !hidden h-14 !min-w-[56px] !max-w-[56px] !rounded-full !p-0 !shadow-button  md:!flex"
         >
           <img src={EllipsisURL} alt="Ellipsis" />
         </Button>
