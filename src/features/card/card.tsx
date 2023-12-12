@@ -1,13 +1,13 @@
-import { TextBlock } from '..';
-import { Creature } from '../../shared/types';
-import { Typography } from '../../shared/ui';
+import { TextBlock } from 'features';
+import { Creature } from 'shared/types';
+import { Typography } from 'shared/ui';
 
 interface Props {
   card: Creature;
 }
 
 export const Card = ({ card }: Props) => (
-  <div className="hover:bg-night-black cursor-pointer rounded-[9px] bg-dark-elf shadow-card duration-300 md:flex">
+  <div className="cursor-pointer rounded-[9px] bg-dark-elf shadow-card duration-300 hover:bg-night-black md:flex">
     <img
       src={card.image}
       alt={card.name}

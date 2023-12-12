@@ -1,11 +1,10 @@
 import Button from '@mui/material/Button';
 import { Stack } from '@mui/system';
 
-import { EllipsisURL } from '../assets';
-import { Card, Pagination } from '../features';
-import { CREATURES } from '../shared/constants';
-import { Typography } from '../shared/ui';
-import { Container } from '../shared/ui/container/container';
+import { EllipsisURL } from 'assets';
+import { Card, Pagination } from 'features';
+import { CREATURES } from 'shared/constants';
+import { Container, Typography } from 'shared/ui';
 
 const App = () => {
   return (
