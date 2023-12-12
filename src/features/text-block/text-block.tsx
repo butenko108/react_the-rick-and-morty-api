@@ -1,4 +1,4 @@
-import { Typography } from '../../shared/ui';
+import { Typography } from 'shared/ui';
 
 interface Props {
   description: string;

@@ -2,7 +2,9 @@ import cn from 'classnames';
 import ReactPagination from 'rc-pagination/lib/Pagination';
 import { ReactNode, useState } from 'react';
 
-import { ChevronLeftURL } from '../../assets';
+import { ChevronLeftURL } from 'assets';
+import { BREAKPOINTS } from 'shared/constants';
+import { useMediaQuery } from 'shared/hooks';
 
 const defaultNumberPage = 1;
 const total = 10;
@@ -27,8 +29,8 @@ const renderCustomButtons = ({ page, type, element, currentPageNumber }: RenderC
           className={cn(
             commonButtonsStyles,
             isActive
-              ? 'pagination-active-button text-washed-black hover:bg-tangled-web bg-white'
-              : 'pagination-inactive-button hover:bg-night-black bg-dark-elf text-white-smoke',
+              ? 'pagination-active-button bg-white text-washed-black hover:bg-tangled-web'
+              : 'pagination-inactive-button bg-dark-elf text-white-smoke hover:bg-night-black',
           )}
         >
           {page}
@@ -41,7 +43,7 @@ const renderCustomButtons = ({ page, type, element, currentPageNumber }: RenderC
           className={cn(
             commonButtonsStyles,
             'mr-[5px]',
-            isPrevDisabled ? 'bg-mortar-grey' : 'hover:bg-tangled-web pagination-inactive-button bg-white',
+            isPrevDisabled ? 'bg-mortar-grey' : 'pagination-inactive-button bg-white hover:bg-tangled-web',
           )}
         >
           <img
@@ -58,7 +60,7 @@ const renderCustomButtons = ({ page, type, element, currentPageNumber }: RenderC
           className={cn(
             commonButtonsStyles,
             'ml-[5px]',
-            isLastDisabled ? 'bg-mortar-grey' : 'hover:bg-tangled-web pagination-inactive-button bg-white',
+            isLastDisabled ? 'bg-mortar-grey' : 'pagination-inactive-button bg-white hover:bg-tangled-web',
           )}
         >
           <img
@@ -75,7 +77,7 @@ const renderCustomButtons = ({ page, type, element, currentPageNumber }: RenderC
         <button
           className={cn(
             commonButtonsStyles,
-            'pagination-inactive-button hover:bg-night-black bg-dark-elf text-white-smoke',
+            'pagination-inactive-button bg-dark-elf text-white-smoke hover:bg-night-black',
           )}
         >
           ...
@@ -90,11 +92,14 @@ const renderCustomButtons = ({ page, type, element, currentPageNumber }: RenderC
 export const Pagination = () => {
   const [currentPageNumber, setCurrentPageNumber] = useState(defaultNumberPage);
   const changePageNumber = (pageNumber: number) => setCurrentPageNumber(pageNumber);
+  const sm = useMediaQuery(BREAKPOINTS.sm);
 
   return (
     <ReactPagination
       showTitle={false}
       pageSize={1}
+      showPrevNextJumpers={sm}
+      showLessItems={!sm}
       total={total}
       current={currentPageNumber}
       onChange={changePageNumber}
