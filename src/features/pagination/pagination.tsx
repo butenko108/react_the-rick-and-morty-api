@@ -95,16 +95,18 @@ export const Pagination = () => {
   const sm = useMediaQuery(BREAKPOINTS.sm);
 
   return (
-    <ReactPagination
-      showTitle={false}
-      pageSize={1}
-      showPrevNextJumpers={sm}
-      showLessItems={!sm}
-      total={total}
-      current={currentPageNumber}
-      onChange={changePageNumber}
-      className="flex items-center gap-[10px]"
-      itemRender={(page, type, element) => renderCustomButtons({ page, type, element, currentPageNumber })}
-    />
+    <div className="flex items-center justify-center">
+      <ReactPagination
+        showTitle={false}
+        pageSize={1}
+        showPrevNextJumpers={sm}
+        showLessItems={!sm}
+        total={total}
+        current={currentPageNumber}
+        onChange={changePageNumber}
+        className="flex items-center gap-[10px]"
+        itemRender={(page, type, element) => renderCustomButtons({ page, type, element, currentPageNumber })}
+      />
+    </div>
   );
 };

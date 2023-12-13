@@ -1,7 +1,7 @@
 import Button from '@mui/material/Button';
 import { Stack } from '@mui/system';
 
-import { CardsList } from 'features';
+import { CardsList, Pagination } from 'features';
 import { Container, Typography } from 'shared/ui';
 
 export const Main = () => {
@@ -18,6 +18,7 @@ export const Main = () => {
       </div>
 
       <CardsList />
+      <Pagination />
     </Container>
   );
 };

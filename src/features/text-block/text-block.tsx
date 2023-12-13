@@ -1,8 +1,10 @@
+import cn from 'classnames';
+
 import { Typography } from 'shared/ui';
 
 interface Props {
   description: string;
-  text: string;
+  text?: string | null;
   className?: string;
 }
 
@@ -12,8 +14,10 @@ export const TextBlock = ({ description, text, className }: Props) => (
       {description}
     </Typography>
 
-    <Typography variant="p1" className="text-white-smoke">
-      {text}
-    </Typography>
+    {text && (
+      <Typography variant="p1" className={cn('text-white-smoke', { capitalize: text === 'unknown' })}>
+        {text}
+      </Typography>
+    )}
   </div>
 );

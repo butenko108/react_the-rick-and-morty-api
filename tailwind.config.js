@@ -14,6 +14,8 @@ module.exports = {
         'washed-black': '#202329',
         'tangled-web': '#B2B2B2',
         'night-black': '#303136',
+        poinciana: '#D63D2E',
+        'verdant-fields': '#55CC44',
       },
       boxShadow: {
         card: '0px 2px 4px -1px rgba(0, 0, 0, 0.06), 0px 4px 6px -1px rgba(0, 0, 0, 0.10)',
