@@ -1,16 +1,34 @@
+import { useQuery } from '@apollo/client';
 import { Button } from '@mui/material';
+import { useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 
+import { CharacterByIdQuery } from '__generated__/graphql';
 import { EllipsisURL } from 'assets';
 import { TextBlock } from 'features';
+import { GET_CHARACTER_BY_ID } from 'shared/api';
 import { CREATURES } from 'shared/constants';
 import { Container, Typography } from 'shared/ui';
 
-export const CardDetails = () => {
-  const creature = {
-    ...CREATURES[0],
-    otherInfo:
-      'The Mosaic Rooms are a leading non-profit arts organisation and bookshop dedicated to supporting and promoting contemporary culture from the Arab world and beyond in London. Established in 2009, as a project of the A.M. Qattan Foundation, it dedicates its work to championing creative and critical voices that are often underrepresented. ',
-  };
+const creature = {
+  ...CREATURES[0],
+  otherInfo:
+    'The Mosaic Rooms are a leading non-profit arts organisation and bookshop dedicated to supporting and promoting contemporary culture from the Arab world and beyond in London. Established in 2009, as a project of the A.M. Qattan Foundation, it dedicates its work to championing creative and critical voices that are often underrepresented. ',
+};
+
+export const CharacterPage = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  useEffect(() => {
+    if (!location.state?.id) {
+      navigate('/404', { replace: true });
+    }
+  }, [location.state?.id, navigate]);
+
+  const { loading, error, data } = useQuery<CharacterByIdQuery>(GET_CHARACTER_BY_ID, {
+    variables: { characterId: location.state?.id },
+  });
 
   return (
     <Container padding className="py-6 md:pt-10 lg:pt-20">

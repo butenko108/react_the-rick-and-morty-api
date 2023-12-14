@@ -14,6 +14,7 @@ import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/
  */
 const documents = {
     "\n  query Characters($pageNumber: Int!) {\n    characters(page: $pageNumber) {\n      info {\n        count\n        pages\n        next\n        prev\n      }\n      results {\n        id\n        name\n        status\n        species\n        location {\n          id\n          name\n        }\n        episode {\n          id\n          name\n          air_date\n        }\n        image\n      }\n    }\n  }\n": types.CharactersDocument,
+    "\n  query CharacterById($characterId: ID!) {\n    character(id: $characterId) {\n      id\n      name\n      status\n      species\n      location {\n        id\n        name\n      }\n      episode {\n        id\n        name\n        air_date\n      }\n      image\n    }\n  }\n": types.CharacterByIdDocument,
 };
 
 /**
@@ -34,6 +35,10 @@ export function gql(source: string): unknown;
  * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
 export function gql(source: "\n  query Characters($pageNumber: Int!) {\n    characters(page: $pageNumber) {\n      info {\n        count\n        pages\n        next\n        prev\n      }\n      results {\n        id\n        name\n        status\n        species\n        location {\n          id\n          name\n        }\n        episode {\n          id\n          name\n          air_date\n        }\n        image\n      }\n    }\n  }\n"): (typeof documents)["\n  query Characters($pageNumber: Int!) {\n    characters(page: $pageNumber) {\n      info {\n        count\n        pages\n        next\n        prev\n      }\n      results {\n        id\n        name\n        status\n        species\n        location {\n          id\n          name\n        }\n        episode {\n          id\n          name\n          air_date\n        }\n        image\n      }\n    }\n  }\n"];
+/**
+ * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function gql(source: "\n  query CharacterById($characterId: ID!) {\n    character(id: $characterId) {\n      id\n      name\n      status\n      species\n      location {\n        id\n        name\n      }\n      episode {\n        id\n        name\n        air_date\n      }\n      image\n    }\n  }\n"): (typeof documents)["\n  query CharacterById($characterId: ID!) {\n    character(id: $characterId) {\n      id\n      name\n      status\n      species\n      location {\n        id\n        name\n      }\n      episode {\n        id\n        name\n        air_date\n      }\n      image\n    }\n  }\n"];
 
 export function gql(source: string) {
   return (documents as any)[source] ?? {};

@@ -7,7 +7,7 @@ import { CardsList, Pagination } from 'features';
 import { GET_CHARACTERS } from 'shared/api';
 import { Container, Typography } from 'shared/ui';
 
-export const Main = () => {
+export const MainPage = () => {
   const { loading, error, data, fetchMore } = useQuery<CharactersQuery>(GET_CHARACTERS, {
     variables: { pageNumber: 1 },
   });

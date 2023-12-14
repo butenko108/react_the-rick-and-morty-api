@@ -1,7 +1,9 @@
 import cn from 'classnames';
+import { Link } from 'react-router-dom';
 
 import { TextBlock } from 'features';
 import { Typography } from 'shared/ui';
+import { replaceSpacesWithDashes } from 'shared/utils';
 
 interface Props {
   card: {
@@ -22,7 +24,11 @@ interface Props {
 }
 
 export const Card = ({ card }: Props) => (
-  <div className="h-full cursor-pointer rounded-[9px] bg-dark-elf shadow-card duration-300 hover:bg-night-black md:flex">
+  <Link
+    to={replaceSpacesWithDashes(card?.name || '')}
+    state={{ id: card?.id }}
+    className="block h-full cursor-pointer rounded-[9px] bg-dark-elf shadow-card duration-300 hover:bg-night-black md:flex"
+  >
     {card && card.image && card.name && (
       <img
         src={card.image}
@@ -53,5 +59,5 @@ export const Card = ({ card }: Props) => (
       <TextBlock description="Last known location:" text={card?.location?.name} className="mb-[14px]" />
       <TextBlock description="First seen in:" text={card?.episode[0]?.name} />
     </div>
-  </div>
+  </Link>
 );

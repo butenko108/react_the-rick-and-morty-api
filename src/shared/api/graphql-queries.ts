@@ -28,3 +28,24 @@ export const GET_CHARACTERS = gql`
     }
   }
 `;
+
+export const GET_CHARACTER_BY_ID = gql`
+  query CharacterById($characterId: ID!) {
+    character(id: $characterId) {
+      id
+      name
+      status
+      species
+      location {
+        id
+        name
+      }
+      episode {
+        id
+        name
+        air_date
+      }
+      image
+    }
+  }
+`;
