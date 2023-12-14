@@ -1,10 +1,17 @@
+import { useQuery } from '@apollo/client';
 import Button from '@mui/material/Button';
 import { Stack } from '@mui/system';
 
+import { CharactersQuery } from '__generated__/graphql';
 import { CardsList, Pagination } from 'features';
+import { GET_CHARACTERS } from 'shared/api';
 import { Container, Typography } from 'shared/ui';
 
 export const Main = () => {
+  const { loading, error, data, fetchMore } = useQuery<CharactersQuery>(GET_CHARACTERS, {
+    variables: { pageNumber: 1 },
+  });
+
   return (
     <Container padding className="py-6">
       <div className="mb-5">
@@ -17,8 +24,8 @@ export const Main = () => {
         </Stack>
       </div>
 
-      <CardsList />
-      <Pagination />
+      <CardsList data={data} />
+      <Pagination total={data?.characters?.info?.pages} fetchMore={fetchMore} />
     </Container>
   );
 };

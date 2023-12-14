@@ -6,19 +6,17 @@ import { ChevronLeftURL } from 'assets';
 import { BREAKPOINTS } from 'shared/constants';
 import { useMediaQuery } from 'shared/hooks';
 
-const defaultNumberPage = 1;
-const total = 10;
-
 interface RenderCustomButtonsParams {
   page: number;
   type: 'page' | 'prev' | 'next' | 'jump-prev' | 'jump-next';
   element: ReactNode;
   currentPageNumber: number;
+  total: number;
 }
 
-const renderCustomButtons = ({ page, type, element, currentPageNumber }: RenderCustomButtonsParams) => {
+const renderCustomButtons = ({ page, type, element, currentPageNumber, total }: RenderCustomButtonsParams) => {
   const isActive = page === currentPageNumber;
-  const isPrevDisabled = currentPageNumber === defaultNumberPage;
+  const isPrevDisabled = currentPageNumber === 1;
   const isLastDisabled = currentPageNumber === total;
   const commonButtonsStyles = 'flex h-[34px] w-[34px] items-center justify-center rounded duration-300';
 
@@ -89,24 +87,41 @@ const renderCustomButtons = ({ page, type, element, currentPageNumber }: RenderC
   }
 };
 
-export const Pagination = () => {
-  const [currentPageNumber, setCurrentPageNumber] = useState(defaultNumberPage);
-  const changePageNumber = (pageNumber: number) => setCurrentPageNumber(pageNumber);
+interface FetchMoreArgs {
+  variables: {
+    pageNumber: number;
+  };
+}
+
+interface Props {
+  total?: number | null;
+  fetchMore: ({ variables }: FetchMoreArgs) => void;
+}
+
+export const Pagination = ({ total, fetchMore }: Props) => {
+  const [currentPageNumber, setCurrentPageNumber] = useState(1);
   const sm = useMediaQuery(BREAKPOINTS.sm);
+
+  const changePageNumber = (pageNumber: number) => {
+    setCurrentPageNumber(pageNumber);
+    fetchMore({ variables: { pageNumber } });
+  };
 
   return (
     <div className="flex items-center justify-center">
-      <ReactPagination
-        showTitle={false}
-        pageSize={1}
-        showPrevNextJumpers={sm}
-        showLessItems={!sm}
-        total={total}
-        current={currentPageNumber}
-        onChange={changePageNumber}
-        className="flex items-center gap-[10px]"
-        itemRender={(page, type, element) => renderCustomButtons({ page, type, element, currentPageNumber })}
-      />
+      {total && (
+        <ReactPagination
+          showTitle={false}
+          pageSize={1}
+          showPrevNextJumpers={sm}
+          showLessItems={!sm}
+          total={total}
+          current={currentPageNumber}
+          onChange={changePageNumber}
+          className="flex items-center gap-[10px]"
+          itemRender={(page, type, element) => renderCustomButtons({ page, type, element, currentPageNumber, total })}
+        />
+      )}
     </div>
   );
 };
