@@ -3,7 +3,7 @@ import Button from '@mui/material/Button';
 import { Stack } from '@mui/system';
 
 import { CharactersQuery } from '__generated__/graphql';
-import { CardsList, LoadingContainer, Pagination } from 'features';
+import { CardsList, LoadingErrorContainer, Pagination } from 'features';
 import { GET_CHARACTERS } from 'shared/api';
 import { Container, Typography } from 'shared/ui';
 
@@ -13,7 +13,7 @@ export const MainPage = () => {
   });
 
   return (
-    <LoadingContainer loading={loading} size="l">
+    <LoadingErrorContainer loading={loading} size="l" error={!!error}>
       <Container padding className="py-6">
         <div className="mb-5">
           <Stack direction="row" spacing={2}>
@@ -28,6 +28,6 @@ export const MainPage = () => {
         <CardsList data={data} />
         <Pagination total={data?.characters?.info?.pages} fetchMore={fetchMore} />
       </Container>
-    </LoadingContainer>
+    </LoadingErrorContainer>
   );
 };

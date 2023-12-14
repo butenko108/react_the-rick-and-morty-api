@@ -6,7 +6,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 
 import { CharacterByIdQuery } from '__generated__/graphql';
 import { EllipsisURL } from 'assets';
-import { LoadingContainer, TextBlock } from 'features';
+import { LoadingErrorContainer, TextBlock } from 'features';
 import { GET_CHARACTER_BY_ID } from 'shared/api';
 import { ROUTES } from 'shared/constants';
 import { Container, Typography } from 'shared/ui';
@@ -14,20 +14,21 @@ import { Container, Typography } from 'shared/ui';
 export const CharacterPage = () => {
   const navigate = useNavigate();
   const location = useLocation();
-
-  const options = { variables: { characterId: location.state?.id } };
-  const { loading, data } = useQuery<CharacterByIdQuery>(GET_CHARACTER_BY_ID, options);
-  const card = data?.character;
-  const allNameEpisodes = card?.episode?.map(episode => episode?.name).join(', ');
+  const characterId = location.state?.id;
 
   useEffect(() => {
-    if (!location.state?.id) {
+    if (!characterId) {
       navigate(ROUTES.notFoundPage, { replace: true });
     }
-  }, [location.state?.id, navigate]);
+  }, [characterId, navigate]);
+
+  const options = { variables: { characterId } };
+  const { loading, error, data } = useQuery<CharacterByIdQuery>(GET_CHARACTER_BY_ID, options);
+  const card = data?.character;
+  const allNamesEpisodes = card?.episode?.map(episode => episode?.name).join(', ');
 
   return (
-    <LoadingContainer loading={loading} size="l">
+    <LoadingErrorContainer loading={loading} size="l" error={!!error}>
       <Container padding className="py-6 md:py-10 lg:py-14">
         <div className="rounded-[9px] bg-dark-elf lg:flex">
           {card && card.image && card.name && (
@@ -59,7 +60,7 @@ export const CharacterPage = () => {
 
             <TextBlock description="Last known location:" text={card?.location?.name} className="mb-[14px]" />
             <TextBlock description="First seen in:" text={card?.episode[0]?.name} className="mb-[33px]" />
-            <TextBlock description="All episodes which this character appeared in:" text={allNameEpisodes} />
+            <TextBlock description="All episodes which this character appeared in:" text={allNamesEpisodes} />
 
             <Button
               variant="contained"
@@ -71,6 +72,6 @@ export const CharacterPage = () => {
           </div>
         </div>
       </Container>
-    </LoadingContainer>
+    </LoadingErrorContainer>
   );
 };
