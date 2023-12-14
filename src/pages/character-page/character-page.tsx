@@ -28,7 +28,7 @@ export const CharacterPage = () => {
 
   return (
     <LoadingContainer loading={loading} size="l">
-      <Container padding className="py-6 md:pt-10 lg:pt-20">
+      <Container padding className="py-6 md:py-10 lg:py-14">
         <div className="rounded-[9px] bg-dark-elf lg:flex">
           {card && card.image && card.name && (
             <img
