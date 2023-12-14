@@ -17,6 +17,7 @@ export const CharacterPage = () => {
   const options = { variables: { characterId: location.state?.id } };
   const { loading, data } = useQuery<CharacterByIdQuery>(GET_CHARACTER_BY_ID, options);
   const card = data?.character;
+  const allNameEpisodes = card?.episode?.map(episode => episode?.name).join(', ');
 
   useEffect(() => {
     if (!location.state?.id) {
@@ -56,7 +57,8 @@ export const CharacterPage = () => {
             </div>
 
             <TextBlock description="Last known location:" text={card?.location?.name} className="mb-[14px]" />
-            <TextBlock description="First seen in:" text={card?.episode[0]?.name} />
+            <TextBlock description="First seen in:" text={card?.episode[0]?.name} className="mb-[33px]" />
+            <TextBlock description="All episodes which this character appeared in:" text={allNameEpisodes} />
 
             <Button
               variant="contained"

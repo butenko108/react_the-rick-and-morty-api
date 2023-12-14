@@ -10,7 +10,7 @@ interface Props {
 
 export const TextBlock = ({ description, text, className }: Props) => (
   <div className={className}>
-    <Typography variant="p2" className="capitalize text-mortar-grey">
+    <Typography variant="p2" className="text-mortar-grey">
       {description}
     </Typography>
 
