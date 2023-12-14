@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { TextBlock } from 'features';
 import { Typography } from 'shared/ui';
 import { replaceSpacesWithDashes } from 'shared/utils';
+import { ROUTES } from 'shared/constants';
 
 interface Props {
   card: {
@@ -25,7 +26,7 @@ interface Props {
 
 export const Card = ({ card }: Props) => (
   <Link
-    to={replaceSpacesWithDashes(card?.name || '')}
+    to={replaceSpacesWithDashes(card?.name || ROUTES.mainPage)}
     state={{ id: card?.id }}
     className="block h-full cursor-pointer rounded-[9px] bg-dark-elf shadow-card duration-300 hover:bg-night-black md:flex"
   >

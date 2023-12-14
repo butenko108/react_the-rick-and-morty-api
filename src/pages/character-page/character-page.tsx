@@ -8,6 +8,7 @@ import { CharacterByIdQuery } from '__generated__/graphql';
 import { EllipsisURL } from 'assets';
 import { LoadingContainer, TextBlock } from 'features';
 import { GET_CHARACTER_BY_ID } from 'shared/api';
+import { ROUTES } from 'shared/constants';
 import { Container, Typography } from 'shared/ui';
 
 export const CharacterPage = () => {
@@ -21,7 +22,7 @@ export const CharacterPage = () => {
 
   useEffect(() => {
     if (!location.state?.id) {
-      navigate('/404', { replace: true });
+      navigate(ROUTES.notFoundPage, { replace: true });
     }
   }, [location.state?.id, navigate]);
 

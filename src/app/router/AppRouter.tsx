@@ -1,18 +1,19 @@
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
 import { CharacterPage, MainPage, NotFoundPage } from 'pages';
+import { ROUTES } from 'shared/constants';
 
 const router = createBrowserRouter([
   {
-    path: '/',
+    path: ROUTES.mainPage,
     element: <MainPage />,
   },
   {
-    path: '/:characterName',
+    path: ROUTES.characterPage,
     element: <CharacterPage />,
   },
   {
-    path: '/404',
+    path: ROUTES.notFoundPage,
     element: <NotFoundPage />,
   },
 ]);
